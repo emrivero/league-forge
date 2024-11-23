@@ -8,12 +8,19 @@ export const Home = () => {
         display="flex"
         flexDirection="column"
         alignItems="center"
-        minHeight="50vh"
         textAlign="center"
       >
-        <img src="/assets/images/portrait.png" width={"100%"} alt="Portrait" />
+        <Box
+          component="img"
+          src="/assets/images/portrait.png"
+          alt="Portrait"
+          sx={{
+            width: { xs: "80%", md: "50%" }, // 100% width on small screens, 50% on medium and larger screens
+            maxWidth: "600px", // Maximum width for the image
+          }}
+        />
         <Typography variant="h2" component="h1" gutterBottom>
-          Bienvenido a League Forge
+          Bienvenid@ a League Forge
         </Typography>
         <Typography variant="h5" component="p" gutterBottom>
           Tu plataforma definitiva para gestionar ligas y torneos de Blood Bowl.
@@ -26,9 +33,9 @@ export const Home = () => {
         display="flex"
         flexDirection="column"
         alignItems="center"
-        minHeight="20vh"
-        justifyContent={"end"}
+        justifyContent="end"
         textAlign="center"
+        mt={4}
       >
         <Box display="flex" gap={2}>
           <Button
@@ -53,7 +60,7 @@ export const Home = () => {
             component={Link}
             to="/rules"
           >
-            Reglas
+            Reglamento
           </Button>
         </Box>
       </Box>

@@ -1,6 +1,7 @@
-import { SvgIcon } from "@mui/material";
+import { SvgIcon, SvgIconOwnProps } from "@mui/material";
+import { FC } from "react";
 
-export const Logo = (props) => (
+export const Logo: FC<SvgIconOwnProps> = (props) => (
   <SvgIcon {...props}>
     <g
       transform="translate(0.000000,882.000000) scale(0.100000,-0.100000)"

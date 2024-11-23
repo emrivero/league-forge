@@ -24,6 +24,7 @@ import { firebaseAuth, firestoreDatabase } from "./firebase-config";
 import { BlogPostCreate, BlogPostEdit, BlogPostShow } from "./pages/blog-posts";
 import { Home } from "./pages/home";
 import { Leagues } from "./pages/leagues";
+import { Rules } from "./pages/rules/rules";
 import { Teams } from "./pages/teams";
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
               resources={[
                 {
                   name: "home",
-                  list: "/home",
+                  list: "/",
                   meta: {
                     label: "Inicio",
                     icon: <House />,
@@ -96,11 +97,7 @@ function App() {
                     </ThemedLayoutV2>
                   }
                 >
-                  <Route
-                    index
-                    element={<NavigateToResource resource="home" />}
-                  />
-                  <Route path="/home">
+                  <Route path="/">
                     <Route index element={<Home />} />
                   </Route>
                   <Route path="/teams">
@@ -113,7 +110,7 @@ function App() {
                     <Route index element={<Leagues />} />
                   </Route>
                   <Route path="/rules">
-                    <Route index element={<Leagues />} />
+                    <Route index element={<Rules />} />
                   </Route>
                   <Route path="*" element={<ErrorComponent />} />
                 </Route>
