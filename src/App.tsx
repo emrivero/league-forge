@@ -8,6 +8,7 @@ import {
   ThemedLayoutV2,
 } from "@refinedev/mui";
 
+import { App } from "@capacitor/app";
 import { Group, House, Rule, SportsFootball } from "@mui/icons-material";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
@@ -16,6 +17,7 @@ import routerBindings, {
   NavigateToResource,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
+import { useEffect } from "react";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { Header } from "./components/header";
 import { Sider, Title } from "./components/header/sider";
@@ -27,7 +29,25 @@ import { Leagues } from "./pages/leagues";
 import { Rules } from "./pages/rules/rules";
 import { Teams } from "./pages/teams";
 
-function App() {
+function AppRoot() {
+  useEffect(() => {
+    const backButtonListener = App.addListener("backButton", (event) => {
+      // Lógica para manejar el back button
+      if (window.location.pathname === "/home") {
+        // Si estás en la página principal, evitar que cierre la app
+        App.exitApp(); // Salir de la app manualmente (opcional)
+      } else {
+        // Si no estás en la página principal, navega hacia atrás
+        window.history.back();
+      }
+    });
+
+    // Cleanup del listener cuando el componente se desmonte
+    return () => {
+      backButtonListener.then((listener) => listener.remove());
+    };
+  }, []);
+
   return (
     <BrowserRouter>
       <RefineKbarProvider>
@@ -150,4 +170,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppRoot;
