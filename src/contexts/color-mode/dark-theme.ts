@@ -2,10 +2,29 @@ import { createTheme, responsiveFontSizes } from "@mui/material";
 
 const theme = createTheme({
   components: {
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          "&.sportingFont": {
+            fontFamily: '"Sporting", sans-serif',
+          },
+        },
+      },
+    },
     MuiListItemText: {
       styleOverrides: {
         root: {
           color: "#FFFFFF",
+        },
+      },
+    },
+    MuiCardHeader: {
+      styleOverrides: {
+        root: {
+          color: "#00af3E",
+        },
+        subheader: {
+          color: "#FFA500",
         },
       },
     },

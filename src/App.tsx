@@ -9,7 +9,13 @@ import {
 } from "@refinedev/mui";
 
 import { App } from "@capacitor/app";
-import { Group, House, Rule, SportsFootball } from "@mui/icons-material";
+import {
+  Group,
+  House,
+  Rule,
+  SportsFootball,
+  SportsMma,
+} from "@mui/icons-material";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import routerBindings, {
@@ -27,6 +33,7 @@ import { BlogPostCreate, BlogPostEdit, BlogPostShow } from "./pages/blog-posts";
 import { Home } from "./pages/home";
 import { Leagues } from "./pages/leagues";
 import { Rules } from "./pages/rules/rules";
+import Skills from "./pages/rules/skills";
 import { Teams } from "./pages/teams";
 
 function AppRoot() {
@@ -94,7 +101,15 @@ function AppRoot() {
                   meta: {
                     label: "Reglas",
                     icon: <Rule />,
-                    canDelete: true,
+                  },
+                },
+                {
+                  name: "skills",
+                  list: "/rules/skills",
+                  meta: {
+                    parent: "rules",
+                    label: "Habilidades",
+                    icon: <SportsMma />,
                   },
                 },
               ]}
@@ -131,6 +146,9 @@ function AppRoot() {
                   </Route>
                   <Route path="/rules">
                     <Route index element={<Rules />} />
+                    <Route path="skills">
+                      <Route index element={<Skills />} />
+                    </Route>
                   </Route>
                   <Route path="*" element={<ErrorComponent />} />
                 </Route>
