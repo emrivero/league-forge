@@ -38,7 +38,7 @@ export const PlayerStats: FC<{ player: Player }> = ({ player }) => {
 
   return (
     <Box
-      bgcolor={"Background"}
+      bgcolor={theme.palette.background.paper}
       sx={{
         margin: { sm: ".5rem", xs: ".5rem 0" },
       }}
@@ -61,7 +61,7 @@ export const PlayerStats: FC<{ player: Player }> = ({ player }) => {
           justifyContent={"center"}
         >
           <Grid item xs={2}>
-            <Box borderRadius={1} bgcolor={"ButtonShadow"}>
+            <Box borderRadius={1} bgcolor={theme.palette.grey[500]}>
               <Typography
                 textAlign={"center"}
                 fontWeight={"bolder"}
@@ -77,7 +77,7 @@ export const PlayerStats: FC<{ player: Player }> = ({ player }) => {
           <Grid item xs={2}>
             <Box
               borderRadius={1}
-              bgcolor={"ButtonShadow"}
+              bgcolor={theme.palette.grey[500]}
               display={"flex"}
               flexDirection={"column"}
             >
@@ -96,7 +96,7 @@ export const PlayerStats: FC<{ player: Player }> = ({ player }) => {
           <Grid item xs={2}>
             <Box
               borderRadius={1}
-              bgcolor={"ButtonShadow"}
+              bgcolor={theme.palette.grey[500]}
               display={"flex"}
               flexDirection={"column"}
             >
@@ -115,7 +115,7 @@ export const PlayerStats: FC<{ player: Player }> = ({ player }) => {
           <Grid item xs={2}>
             <Box
               borderRadius={1}
-              bgcolor={"ButtonShadow"}
+              bgcolor={theme.palette.grey[500]}
               display={"flex"}
               flexDirection={"column"}
             >
@@ -134,7 +134,7 @@ export const PlayerStats: FC<{ player: Player }> = ({ player }) => {
           <Grid item xs={2}>
             <Box
               borderRadius={1}
-              bgcolor={"ButtonShadow"}
+              bgcolor={theme.palette.grey[500]}
               display={"flex"}
               flexDirection={"column"}
             >

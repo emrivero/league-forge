@@ -65,6 +65,9 @@ const theme = createTheme({
       primary: "#000000",
       secondary: "#4F4F4F",
     },
+    grey: {
+      "500": "#eee",
+    },
   },
 });
 

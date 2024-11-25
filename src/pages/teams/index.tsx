@@ -110,7 +110,7 @@ export const Teams = () => {
         container
         spacing={2}
       >
-        {data?.length > 0 ? (
+        {data && data?.length > 0 ? (
           data?.map((team) => (
             <Grid
               item
@@ -140,6 +140,9 @@ export const Teams = () => {
                       className="sportingFont"
                       textAlign={"center"}
                       variant="h4"
+                      style={{
+                        textDecoration: "none",
+                      }}
                     >
                       {team.name}
                     </Typography>
@@ -148,6 +151,9 @@ export const Teams = () => {
                       textAlign={"center"}
                       variant="h5"
                       fontWeight={"bold"}
+                      style={{
+                        textDecoration: "none",
+                      }}
                     >
                       Tier {team.tier}
                     </Typography>

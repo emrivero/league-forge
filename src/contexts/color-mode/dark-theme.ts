@@ -46,6 +46,7 @@ const theme = createTheme({
       fontFamily: '"Sporting", sans-serif',
     },
   },
+
   palette: {
     mode: "dark",
     primary: {
@@ -62,6 +63,9 @@ const theme = createTheme({
     text: {
       primary: "#FFFFFF",
       secondary: "#B0B0B0",
+    },
+    grey: {
+      "500": "#999",
     },
   },
 });
