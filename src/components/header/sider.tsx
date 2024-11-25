@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { ThemedSiderV2 } from "@refinedev/mui";
 import { FC } from "react";
+import { ThemedSiderV2 } from "../layout/sider";
 
 export const Title: FC = () => {
   const theme = useTheme();
@@ -29,7 +29,7 @@ export function Sider() {
             }}
           >
             <div>{items}</div>
-            <div style={{ marginTop: "60vh" }}>{logout}</div>
+            <div>{logout}</div>
           </div>
         );
       }}

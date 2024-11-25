@@ -5,7 +5,6 @@ import {
   CardContent,
   CardHeader,
   Chip,
-  Container,
   Grid,
   IconButton,
   InputAdornment,
@@ -16,6 +15,7 @@ import { useTheme } from "@mui/material/styles";
 import { useList } from "@refinedev/core";
 import React, { useState } from "react";
 import Loading from "../../../components/loading";
+import { NoData } from "../../../components/no-data";
 import { Skill } from "./types";
 export default function Skills() {
   const theme = useTheme();
@@ -62,8 +62,8 @@ export default function Skills() {
     };
 
     return (
-      <Container>
-        <Container
+      <Box padding={{ md: 2 }}>
+        <Box
           style={{
             position: "sticky",
             top: "3rem",
@@ -107,28 +107,33 @@ export default function Skills() {
               />
             ))}
           </Box>
-        </Container>
-        <Grid style={{ marginTop: ".5rem" }} container spacing={2}>
-          {filteredSkills?.map((skill) => (
-            <Grid item xs={12} key={skill.id}>
-              <Card style={{ boxShadow: "none" }}>
-                <CardHeader title={skill.name} subheader={skill.type} />
-                <CardContent>
-                  {skill.description.map((desc, index) => (
-                    <Typography
-                      key={index}
-                      variant="body2"
-                      color="textSecondary"
-                    >
-                      {desc}
-                    </Typography>
-                  ))}
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
+        </Box>
+        <Grid
+          justifyContent={"center"}
+          style={{ marginTop: ".5rem" }}
+          container
+          spacing={2}
+        >
+          {filteredSkills.length > 0 ? (
+            filteredSkills?.map((skill) => (
+              <Grid item xs={12} key={skill.id}>
+                <Card style={{ boxShadow: "none" }}>
+                  <CardHeader title={skill.name} subheader={skill.type} />
+                  <CardContent>
+                    {skill.description.map((desc, index) => (
+                      <Typography key={index} variant="body1">
+                        {desc}
+                      </Typography>
+                    ))}
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))
+          ) : (
+            <NoData />
+          )}
         </Grid>
-      </Container>
+      </Box>
     );
   }
 

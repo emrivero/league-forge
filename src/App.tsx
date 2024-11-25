@@ -5,7 +5,6 @@ import {
   ErrorComponent,
   notificationProvider,
   RefineSnackbarProvider,
-  ThemedLayoutV2,
 } from "@refinedev/mui";
 
 import { App } from "@capacitor/app";
@@ -27,14 +26,17 @@ import { useEffect } from "react";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { Header } from "./components/header";
 import { Sider, Title } from "./components/header/sider";
+import { ThemedLayoutV2 } from "./components/layout";
 import { ColorModeContextProvider } from "./contexts/color-mode";
-import { firebaseAuth, firestoreDatabase } from "./firebase-config";
-import { BlogPostCreate, BlogPostEdit, BlogPostShow } from "./pages/blog-posts";
+import { firestoreDatabase } from "./firebase-config";
+import { BlogPostCreate, BlogPostEdit } from "./pages/blog-posts";
 import { Home } from "./pages/home";
 import { Leagues } from "./pages/leagues";
 import { Rules } from "./pages/rules/rules";
 import Skills from "./pages/rules/skills";
 import { Teams } from "./pages/teams";
+import { TeamPage } from "./pages/teams/team";
+import authProvider from "./providers/auth";
 
 function AppRoot() {
   useEffect(() => {
@@ -64,7 +66,7 @@ function AppRoot() {
           <RefineSnackbarProvider>
             <Refine
               dataProvider={firestoreDatabase.getDataProvider()}
-              authProvider={firebaseAuth.getAuthProvider()}
+              authProvider={authProvider}
               routerProvider={routerBindings}
               notificationProvider={notificationProvider}
               resources={[
@@ -139,7 +141,7 @@ function AppRoot() {
                     <Route index element={<Teams />} />
                     <Route path="create" element={<BlogPostCreate />} />
                     <Route path="edit/:id" element={<BlogPostEdit />} />
-                    <Route path="show/:id" element={<BlogPostShow />} />
+                    <Route path=":id" element={<TeamPage />} />
                   </Route>
                   <Route path="/leagues">
                     <Route index element={<Leagues />} />
@@ -164,11 +166,17 @@ function AppRoot() {
                 >
                   <Route
                     path="/login"
-                    element={<AuthPage type="login" formProps={{}} />}
+                    element={
+                      <AuthPage
+                        type="login"
+                        title="League Forge"
+                        formProps={{}}
+                      />
+                    }
                   />
                   <Route
                     path="/register"
-                    element={<AuthPage type="register" />}
+                    element={<AuthPage type="register" title="League Forge" />}
                   />
                   <Route
                     path="/forgot-password"

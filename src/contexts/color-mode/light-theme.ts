@@ -2,6 +2,15 @@ import { createTheme, responsiveFontSizes } from "@mui/material";
 
 const theme = createTheme({
   components: {
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          "&.teamContainer": {
+            backgroundColor: "#086788",
+          },
+        },
+      },
+    },
     MuiTypography: {
       styleOverrides: {
         root: {
@@ -46,6 +55,7 @@ const theme = createTheme({
     },
     secondary: {
       main: "#FFA500",
+      "900": "#ba7d0d",
     },
     background: {
       default: "#F5F5F5",

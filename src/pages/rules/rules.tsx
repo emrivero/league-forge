@@ -1,5 +1,10 @@
-import { Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import { NoData } from "../../components/no-data";
 
 export const Rules = () => {
-  return <Typography variant="h1">Rules</Typography>;
+  return (
+    <Box>
+      <NoData title={"En construcción..."} />
+    </Box>
+  );
 };
