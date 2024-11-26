@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { Link, useList } from "@refinedev/core";
+import { useGo, useList, useNavigation } from "@refinedev/core";
 import { useState } from "react";
 import Loading from "../../components/loading";
 import { NoData } from "../../components/no-data";
@@ -18,6 +18,8 @@ import { PictureMap } from "./pictureMap";
 import { Team } from "./types"; // Asegúrate de que la ruta sea correcta
 
 export const Teams = () => {
+  const { push } = useNavigation();
+  const go = useGo();
   const theme = useTheme();
   const [search, setSearch] = useState("");
   const [selectedTiers, setSelectedTiers] = useState<number[]>([]);
@@ -123,56 +125,55 @@ export const Teams = () => {
                 cursor: "pointer",
               }}
             >
-              <Link to={`/teams/${team.id}`} key={team.id}>
-                <Box
-                  key={team.id}
-                  bgcolor={theme.palette.background.paper}
-                  marginBottom={"1rem"}
+              <Box
+                onClick={() => push(`/teams/${team.id}`)}
+                key={team.id}
+                bgcolor={theme.palette.background.paper}
+                marginBottom={"1rem"}
+              >
+                <Container
+                  className="teamContainer"
+                  style={{
+                    padding: ".25rem",
+                  }}
                 >
-                  <Container
-                    className="teamContainer"
+                  <Typography
+                    color={"Background"}
+                    className="sportingFont"
+                    textAlign={"center"}
+                    variant="h4"
                     style={{
-                      padding: ".25rem",
+                      textDecoration: "none",
                     }}
                   >
-                    <Typography
-                      color={"Background"}
-                      className="sportingFont"
-                      textAlign={"center"}
-                      variant="h4"
-                      style={{
-                        textDecoration: "none",
-                      }}
-                    >
-                      {team.name}
-                    </Typography>
-                    <Typography
-                      color={"Background"}
-                      textAlign={"center"}
-                      variant="h5"
-                      fontWeight={"bold"}
-                      style={{
-                        textDecoration: "none",
-                      }}
-                    >
-                      Tier {team.tier}
-                    </Typography>
-                  </Container>
-                  <Container style={{ marginTop: ".5rem" }}>
-                    <img
-                      src={
-                        PictureMap[team.name] ||
-                        "/assets/images/teams/default.webp"
-                      }
-                      alt="Loading"
-                      width={"100%"}
-                      style={{
-                        filter: "none",
-                      }}
-                    />
-                  </Container>
-                </Box>
-              </Link>
+                    {team.name}
+                  </Typography>
+                  <Typography
+                    color={"Background"}
+                    textAlign={"center"}
+                    variant="h5"
+                    fontWeight={"bold"}
+                    style={{
+                      textDecoration: "none",
+                    }}
+                  >
+                    Tier {team.tier}
+                  </Typography>
+                </Container>
+                <Container style={{ marginTop: ".5rem" }}>
+                  <img
+                    src={
+                      PictureMap[team.name] ||
+                      "/assets/images/teams/default.webp"
+                    }
+                    alt="Loading"
+                    width={"100%"}
+                    style={{
+                      filter: "none",
+                    }}
+                  />
+                </Container>
+              </Box>
             </Grid>
           ))
         ) : (

@@ -51,8 +51,8 @@
     "refine": "refine",
     "update-android-version": "node scripts/update-android-version.js",
     "sync": "npx cap sync",
-    "release": "commit-and-tag-version && npm run build && npm run update-android-version",
-    "postbuild": " npm run sync"
+    "release": "commit-and-tag-version && npm run build",
+    "postbuild": " npm run sync && npm run update-android-version"
   },
   "browserslist": {
     "production": [
