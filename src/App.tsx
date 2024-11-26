@@ -25,7 +25,7 @@ import routerBindings, {
 import { useEffect } from "react";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { Header } from "./components/header";
-import { Sider, Title } from "./components/header/sider";
+import { Sider } from "./components/header/sider";
 import { ThemedLayoutV2 } from "./components/layout";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { firestoreDatabase } from "./firebase-config";
@@ -126,7 +126,7 @@ function AppRoot() {
                 <Route
                   element={
                     <ThemedLayoutV2
-                      Title={() => <Title />}
+                      Title={() => <title>League Forge</title>}
                       Sider={Sider}
                       Header={Header}
                     >
@@ -187,7 +187,14 @@ function AppRoot() {
 
               <RefineKbar />
               <UnsavedChangesNotifier />
-              <DocumentTitleHandler />
+              <DocumentTitleHandler
+                handler={({ resource }) => {
+                  if (resource?.meta) {
+                    return `${resource.meta.label} | League Forge`;
+                  }
+                  return "League Forge";
+                }}
+              />
             </Refine>
           </RefineSnackbarProvider>
         </ColorModeContextProvider>

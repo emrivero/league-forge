@@ -186,12 +186,28 @@ export const PlayerStats: FC<{ player: Player }> = ({ player }) => {
         </Box>
       </CardContent>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle fontWeight={"bolder"} color={"secondary"}>
+        <DialogTitle
+          fontWeight={"bolder"}
+          color={"secondary"}
+          sx={{
+            fontSize: {
+              md: "3rem",
+            },
+          }}
+        >
           {skillData?.name}
         </DialogTitle>
         <DialogContent>
           {skillData?.description.map((desc, index) => (
-            <Typography key={index} variant="body1">
+            <Typography
+              key={index}
+              variant="body1"
+              sx={{
+                fontSize: {
+                  md: "1.2rem",
+                },
+              }}
+            >
               {desc}
             </Typography>
           ))}

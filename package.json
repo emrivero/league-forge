@@ -1,6 +1,6 @@
 {
   "name": "league-forge",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.8.2",
@@ -50,7 +50,8 @@
     "refine": "refine",
     "update-android-version": "node scripts/update-android-version.js",
     "sync": "npx cap sync",
-    "postbuild": " npm run sync && npm run update-android-version"
+    "release": "commit-and-tag-version && npm run update-android-version",
+    "postbuild": " npm run sync && npm run release"
   },
   "browserslist": {
     "production": [

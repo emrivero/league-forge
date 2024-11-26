@@ -4,6 +4,7 @@ import { useResourceParams } from "@refinedev/core";
 import Loading from "../../../components/loading";
 import { NoData } from "../../../components/no-data";
 import { useTeam } from "../../../hooks/api/useTeam";
+import { useTitle } from "../../../hooks/title";
 import { PictureMap } from "../pictureMap";
 import { Players } from "./players-stats";
 
@@ -11,6 +12,8 @@ export const TeamPage = () => {
   const theme = useTheme();
   const { id } = useResourceParams();
   const { error, isLoading, team: data } = useTeam(id?.toString() || "");
+
+  useTitle(data?.name || "Loading...");
 
   if (isLoading) {
     return <Loading />;
@@ -58,7 +61,7 @@ export const TeamPage = () => {
             Jugadores
           </Typography>
         </Box>
-        <Players players={data?.players || []} />;
+        <Players players={data?.players || []} />
       </Box>
       <Box>
         <Box padding={2}>
