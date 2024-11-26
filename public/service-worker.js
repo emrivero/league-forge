@@ -1,9 +1,7 @@
 // service-worker.js
 
-const CACHE_NAME = "my-pwa-cache-v1.1";
-const urlsToCache = [
-  // Añade aquí otros archivos que quieras cachear
-];
+const CACHE_NAME = "my-pwa-cache-v1.3.2";
+const urlsToCache = ["/", "/index.html", "/favicon.ico"];
 
 // Instalación del service worker
 self.addEventListener("install", (event) => {
